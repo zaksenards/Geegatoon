@@ -7,6 +7,9 @@ class Database {
 	private m_sql: SQLite.SQLiteDatabase | null = null;
 	static singleton: Database;
 
+	/**
+	 * 	Load and initialize the application's database
+	 */
 	private async loadSqlDatabase(): Promise<string> {
 		const [{ localUri }] = await Asset.loadAsync(
 			require("../sql/database.sql")
@@ -23,6 +26,10 @@ class Database {
 		});
 	}
 
+	/**
+	 * Return a singleton instance of the class
+	 * @returns Database promise
+	 */
 	static async getInstance(): Promise<Database> {
 		if (!this.singleton) {
 			this.singleton = new Database();
@@ -43,8 +50,14 @@ class Database {
 		return this.singleton;
 	}
 
+	/**
+	 * Save content in the database
+	 * @param id: Content ID
+	 * @param title: Content title
+	 * @param image_path: Content image's path
+	 */
 	public async insertFavorite(id: string, title: string, image_path: string) {
-		let result = await this.m_sql?.runAsync(
+		await this.m_sql?.runAsync(
 			"INSERT INTO favorites(id, title, image_path) VALUES(?,?,?)",
 			id,
 			title,
@@ -52,6 +65,18 @@ class Database {
 		);
 	}
 
+	/**
+	 * Delete content from database
+	 * @param id: Content id
+	 */
+	public async deleteFavorite(id: string) {
+		await this.m_sql?.runAsync(`DELETE FROM favorites WHERE id=${id}`);
+	}
+
+	/**
+	 * Retrieve all favorites from database
+	 * @returns Content promise
+	 */
 	public async selectFavorites(): Promise<ContentType[]> {
 		return new Promise(async (accept, reject) => {
 			let result: DBFavorites[] | undefined;

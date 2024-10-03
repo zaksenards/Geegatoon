@@ -40,6 +40,7 @@ class UserInfo {
 		let instance = this.getInstance();
 		let favorites = instance.m_favorites;
 
+		instance.m_sql?.deleteFavorite(content.id.toString());
 		instance.m_favorites = favorites.filter((el) => {
 			return el.id != content.id;
 		});
