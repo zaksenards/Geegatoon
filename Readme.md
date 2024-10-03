@@ -1,5 +1,6 @@
 # Geegatoon
 
+The best solution for cataloging, managing and discovering manhwas. Organize your collections, track your progress, and find new works to read. Ideal for manhwa lovers who want to keep everything in order!  
 
 # Fixme
 

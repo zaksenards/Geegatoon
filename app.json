@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Geegatoon",
-    "slug": "Geegatoon",
+    "slug": "geegatoon",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,6 +26,18 @@
     "plugins": [
       "expo-secure-store",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "57c4d7e8-baae-494e-be7f-0b458c7f78ce"
+      }
+    },
+    "owner": "zaksenards",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/57c4d7e8-baae-494e-be7f-0b458c7f78ce"
+    }
   }
 }
